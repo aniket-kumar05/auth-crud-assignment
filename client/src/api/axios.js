@@ -3,10 +3,8 @@ import axios from 'axios';
 const api = axios.create({
   baseURL: '/api',
   withCredentials: true, // Send httpOnly cookies with requests
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
+
 
 let storeInstance = null;
 
