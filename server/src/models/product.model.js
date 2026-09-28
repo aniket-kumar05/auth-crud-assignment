@@ -32,6 +32,16 @@ const productSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    image: {
+      url: {
+        type: String,
+        default: "",
+      },
+      fileId: {
+        type: String,
+        default: "",
+      },
+    },
   },
   {
     timestamps: true,

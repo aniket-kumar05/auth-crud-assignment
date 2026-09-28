@@ -1,10 +1,25 @@
 import React from 'react';
-import { Edit2, Trash2, Tag, Box, User } from 'lucide-react';
+import { Edit2, Trash2, Tag, Box, User, Image as ImageIcon } from 'lucide-react';
 
 const ProductCard = ({ product, isAuthenticated, onEdit, onDelete }) => {
   return (
-    <div className="bg-slate-900/90 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/5 group">
+    <div className="bg-slate-900/90 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/5 group overflow-hidden">
       <div>
+        {product.image?.url ? (
+          <div className="w-full h-44 rounded-xl overflow-hidden mb-4 bg-slate-950 border border-slate-800 relative group-hover:border-indigo-500/30 transition">
+            <img
+              src={product.image.url}
+              alt={product.name}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        ) : (
+          <div className="w-full h-36 rounded-xl overflow-hidden mb-4 bg-slate-950/60 border border-slate-800/80 flex flex-col items-center justify-center text-slate-700">
+            <ImageIcon size={32} className="opacity-40 mb-1" />
+            <span className="text-[11px] font-medium opacity-50">No Image</span>
+          </div>
+        )}
+
         <div className="flex items-center justify-between mb-3">
           <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
             <Tag size={12} />
@@ -26,6 +41,7 @@ const ProductCard = ({ product, isAuthenticated, onEdit, onDelete }) => {
           {product.description || 'No description provided for this product.'}
         </p>
       </div>
+
 
       <div>
         <div className="flex items-baseline justify-between pt-3 border-t border-slate-800/80 mb-3">
